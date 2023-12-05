@@ -1,0 +1,13 @@
+name: Separate workflow
+
+on:
+  repository_dispatch:
+    types: [test]
+
+jobs:
+  something:
+    name: Something
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run: echo "${{ toJson(github.event.client_payload) }}"

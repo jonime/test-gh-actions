@@ -12,3 +12,14 @@ jobs:
       - name: Something
         run: |
           echo "${{ toJSON(github.event )}}"
+      - name: Trigger Another Workflow
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const response = await github.actions.createWorkflowDispatch({
+              owner: 'jonime',
+              repo: 'test-gh-actions',
+              workflow_id: 'test',
+              ref: 'main',
+            });
+            console.log(response);
