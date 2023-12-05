@@ -13,4 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Do something
-        run: echo "${{ toJson(github.event.client_payload) }}"
+        run: |
+          echo "Ref: ${{ github.ref }}"
+          echo "Test: ${{ inputs.test }}"
