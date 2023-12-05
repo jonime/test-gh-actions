@@ -9,4 +9,6 @@ jobs:
     name: Do something
     runs-on: ubuntu-latest
     steps:
-      - run: echo "something"
+      - name: Something
+        run: |
+          echo "${{ fromJSON(github.event )}}"

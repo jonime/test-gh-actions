@@ -13,7 +13,6 @@ jobs:
     name: After dispatch
     runs-on: ubuntu-latest
     steps:
-      - name: Do something
+      - name: Something
         run: |
-          echo "OK!"
-          echo "{{ fromJSON(github.event) }}"
+          echo "${{ fromJSON(github.event) }}"
