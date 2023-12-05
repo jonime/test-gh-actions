@@ -1,0 +1,12 @@
+name: On dispatch
+
+on:
+  repository_dispatch:
+    types: [content-build]
+
+jobs:
+  something:
+    name: Do something
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "something"
