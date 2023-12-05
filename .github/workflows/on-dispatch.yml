@@ -21,5 +21,8 @@ jobs:
               repo: 'test-gh-actions',
               workflow_id: 'separate.yml',
               ref: 'main',
+              inputs: {
+                test: 'something'
+              }
             });
             console.log(response);

@@ -1,8 +1,11 @@
 name: Separate workflow
 
 on:
-  repository_dispatch:
-    types: [test]
+  workflow_dispatch:
+    inputs:
+      test:
+        required: true
+        type: string
 
 jobs:
   something:
