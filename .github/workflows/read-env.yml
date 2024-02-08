@@ -1,0 +1,12 @@
+name: Read environment variables
+
+on:
+  push:
+
+jobs:
+  read-env:
+    name: Read environment variables
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - run: echo "${{ toJson(vars) }}"
