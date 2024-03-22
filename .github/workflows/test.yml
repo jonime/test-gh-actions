@@ -1,0 +1,15 @@
+name: Test things
+
+on:
+  push:
+
+jobs:
+  set-env:
+    name: Set env
+    uses: ./.github/workflows/set-env.yml
+
+  read-env:
+    name: Read env
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ toJson(env) }}"

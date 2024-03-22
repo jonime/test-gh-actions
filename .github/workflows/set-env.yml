@@ -1,0 +1,13 @@
+name: Set environment things
+
+on:
+  workflow_call:
+
+jobs:
+  set-things:
+    name: Set things
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set things
+        run: |
+          echo "SOMETHING=KISSA" >> $GITHUB_ENV
