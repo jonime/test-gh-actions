@@ -4,12 +4,11 @@ on:
   push:
 
 jobs:
-  set-env:
-    name: Set env
-    uses: ./.github/workflows/set-env.yml
-
-  read-env:
-    name: Read env
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(env) }}"
+      - run: |
+          echo "koira=kissa" >> $GITHUB_ENV
+      - run: |
+          echo "${{ toJson(env) }}"
