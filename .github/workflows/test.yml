@@ -4,7 +4,15 @@ on:
   push:
 
 jobs:
+  before:
+    name: Before
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "majava=koira" >> $GITHUB_ENV
+
   test:
+    needs: ["before"]
     name: Test
     runs-on: ubuntu-latest
     steps:
