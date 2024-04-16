@@ -1,0 +1,30 @@
+name: Create a weekly release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-weekly-release:
+    name: Create a weekly release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Create the weekly release
+        run: |
+          set -e
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          current_version=$(jq -r '.version' package.json)
+          version=$(echo $current_version | awk -F. '{print $1 + 1 "." $2 "." $3}')
+          git checkout -b release/${version}
+          npm version major
+          gh pr create --title "Release ${version}" --body "Release ${version}"
+
+          pr_link=$(gh pr view --json url --jq '.html_url')
+          echo $pr_link >> $GITHUB_SUMMARY
