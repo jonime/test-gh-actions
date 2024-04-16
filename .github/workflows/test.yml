@@ -12,3 +12,5 @@ jobs:
           echo "koira=kissa" >> $GITHUB_ENV
       - run: |
           echo "${{ toJson(env) }}"
+      - run: |
+          env
