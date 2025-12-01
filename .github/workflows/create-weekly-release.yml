@@ -20,7 +20,7 @@ jobs:
       - name: Create the weekly release
         run: |
           set -e
-          git config --global user.name "${{ github.actor }}"
+          git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           current_version=$(jq -r '.version' package.json)
           version=$(echo $current_version | awk -F. '{print $1 + 1 "." $2 "." $3}')
