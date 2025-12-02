@@ -1,0 +1,24 @@
+name: Launch rocket
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - edited
+      - synchronize
+      - assigned
+  issue_comment:
+    types:
+      - created
+      - edited
+      - deleted
+
+jobs:
+  launch-rocket:
+    name: Launch rocket
+    runs-on: ubuntu-latest
+    steps:
+      - name: Launch rocket
+        run: |
+          echo "${{ toJSON(github) }}"
+          # gh pr comment 123 --body "🚀"
