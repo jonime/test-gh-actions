@@ -29,3 +29,8 @@ jobs:
           git push --follow-tags origin release/${version}
           pr_link=$(gh pr create --title "Release ${version}" --body "Release ${version}")
           echo $pr_link >> $GITHUB_STEP_SUMMARY
+
+          echo "```bash" >> $GITHUB_STEP_SUMMARY
+          echo "git fetch" >> $GITHUB_STEP_SUMMARY
+          echo "git checkout release/${version}" >> $GITHUB_STEP_SUMMARY
+          echo "```" >> $GITHUB_STEP_SUMMARY
