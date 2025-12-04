@@ -10,6 +10,8 @@ jobs:
     if: github.event.comment.body == 'launch'
     name: Launch rocket
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Launch rocket
         run: |
