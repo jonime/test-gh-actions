@@ -17,7 +17,7 @@ jobs:
   confirmation:
     name: Deployment confirmation
     needs: [deploy-to-staging]
-    environment: prod-deployment
+    environment: deployment
     runs-on: ubuntu-latest
     steps:
       - name: Deployment confirmation
