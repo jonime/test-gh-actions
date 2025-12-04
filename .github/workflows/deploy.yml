@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  deploy-to-staging:
+    name: Deploy to staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging"
+
+  confirmation:
+    name: Deployment confirmation
+    environment: prod-deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment confirmation
+        run: |
+          echo "Deployment confirmation"
+
+  deploy-to-prod:
+    name: Deploy to prod
+    needs: [confirmation]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to prod
+        run: |
+          echo "Deploying to prod"
