@@ -1,5 +1,8 @@
 name: Launch rocket
 
+permissions:
+  pull-requests: write
+
 on:
   issue_comment:
     types:
