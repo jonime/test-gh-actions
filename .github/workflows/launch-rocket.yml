@@ -13,6 +13,9 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
       - name: Launch rocket
         run: |
           echo "${{ toJSON(github.event) }}"
