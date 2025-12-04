@@ -1,23 +1,17 @@
 name: Launch rocket
 
 on:
-  pull_request:
   issue_comment:
-  discussion:
-  discussion_comment:
-  label:
-  issues:
-  pull_request_review:
-  pull_request_review_comment:
-  status:
-  gollum:
+    types:
+      - created
 
 jobs:
   launch-rocket:
+    if: github.event.comment.body == 'launch'
     name: Launch rocket
     runs-on: ubuntu-latest
     steps:
       - name: Launch rocket
         run: |
           echo "${{ toJSON(github.event) }}"
-          # gh pr comment 123 --body "🚀"
+          gh pr comment ${{ github.event.issue.number }} --body "Launching the rocket 🚀"
